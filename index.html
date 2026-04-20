@@ -3,21 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Age Calculator</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Leap Year - Flask Project</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
+
 <body>
-    <h1>Age Calculator</h1>
-    <form action="/calculate" method="POST">
-        <label for="birth_year">enter your year of birth:</label>
-        <input type="number" id="birth_year" name="birth_year" required><br>
-        <button type="submit">Calculate age</button>
+
+     <h1>Leap Year Checker</h1>
+
+    <form method="POST">
+        <input type="number" name="year" placeholder="Enter year" required>
+        <button type="submit">Check</button>
     </form>
-    {% if age is not none %}
-    <h2>Your age is: {{ age }}</h2>
+
+    {% if result %}
+        <h2 class="{% if 'NOT' in result %}not-leap{% else %}leap{% endif %}">
+            {{ result }}
+        </h2>
     {% endif %}
-    {% if error is not none %}
-    <h2 style="color: red;">{{ error }}</h2>
-    {% endif %}
+
 </body>
 </html>
