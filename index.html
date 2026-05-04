@@ -1,31 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMI Calculator</title>
+    <title>Vowel Counter</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
+
     <div class="container">
-        <h1>BMI Calculator</h1>
+        <h1>Vowel Counter</h1>
 
-        <form method="post">
-            <label>Weight (kg)</label>
-            <input type="number" step="any" name="weight" placeholder="Enter weight" required>
-
-            <label>Height (cm)</label>
-            <input type="number" step="any" name="height" placeholder="Enter height" required>
-
-            <button type="submit">Calculate</button>
+        <form method="POST">
+            <input type="text" name="text" placeholder="Enter text" required>
+            <br><br>
+            <button type="submit">Count</button>
         </form>
 
-        {% if bmi %}
-        <div class="result">
-            <h2>Your BMI: {{ bmi | round(2) }}</h2>
-            <h3>Category: {{ category }}</h3>
-        </div>
+        {% if count is not none %}
+            <div class="result">
+                <h2>Input: {{ text }}</h2>
+                <h3>Vowel Count: {{ count }}</h3>
+            </div>
         {% endif %}
     </div>
+
 </body>
 </html>
